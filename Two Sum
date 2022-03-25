@@ -1,0 +1,37 @@
+/* 
+
+Prompt: "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+You can return the answer in any order."
+Notes: For the first prompt I wanted to go off of memory to create something similar to a nested for loop. The program is inefficent in its design and has room for optimization. I will revist this with a smarter algorithm.
+*********************************************************************************************************************************************************************
+*/
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        int size = nums.size();
+        int count = 1;
+        //A vector storing the indexes of our answer
+        vector<int> answer;
+        answer.assign(2, 0);
+        for(int i=0; i < size-1; i++)
+        {
+            //Similar to a nested for loop, interate over each value in until an answer is found
+            while(count != size)
+            {
+                //If addition of the two indexes is equal to the target and the values are not the same
+                if(nums[i] + nums[count] == target && i != count)
+                {
+                    answer[0] = i;
+                    answer[1] = count;
+                }
+                count++;
+            }
+            count = i+1;
+        }
+        return answer;
+    }
+};
