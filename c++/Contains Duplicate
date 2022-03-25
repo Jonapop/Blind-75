@@ -1,0 +1,24 @@
+/*
+Prompt: "Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct."
+Notes: This one was very straightforward. Using a basic sort we can put the array in an order where we only need to look one index ahead for a potential match.
+*********************************************************************************************************************************************************************
+*/
+
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+    int size = nums.size();
+    //Start with false unless we find a case
+    bool answer = false;
+    //If we sort we only need to look one index forward for a potential match
+    sort(nums.begin(), nums.end());
+    for(int i = 0; i < size-1; i++)
+    {
+        if(nums[i] == nums[i+1])
+        {
+        answer = true;
+        }
+    }
+    return answer;
+    }
+};
