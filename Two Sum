@@ -23,7 +23,7 @@ public:
             //Similar to a nested for loop, interate over each value in until an answer is found
             while(count != size)
             {
-                //If addition of the two indexes is equal to the target and the values are not the same
+                //If addition of the two indexes are equal to the target and the values are not the same
                 if(nums[i] + nums[count] == target && i != count)
                 {
                     answer[0] = i;
