@@ -5,7 +5,8 @@ Prompt: "Given an array of integers nums and an integer target, return indices o
 You may assume that each input would have exactly one solution, and you may not use the same element twice.
 
 You can return the answer in any order."
-Notes: For the first prompt I wanted to go off of memory to create something similar to a nested for loop. The program is inefficent in its design and has room for optimization. I will revist this with a smarter algorithm.
+Notes: For the first prompt I wanted to go off of memory to create something similar to a nested for loop. The program is inefficent in its design and has room for
+optimization. I will revist this with a smarter algorithm.
 *********************************************************************************************************************************************************************
 */
 
