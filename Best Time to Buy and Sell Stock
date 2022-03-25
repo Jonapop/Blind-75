@@ -1,0 +1,37 @@
+/*
+Prompt: "You are given an array prices where prices[i] is the price of a given stock on the ith day.
+
+You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+
+Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0."
+
+Comment: For this prompt I spent time researching potentially approaches to similar problems. I wanted a more optimized solution and this ended up almost identical
+to the provided video solution. I didn't want to "reinvent the wheel" so to speak The program keeps a running total of the min and checks each index to see where the
+profit is largest.
+*********************************************************************************************************************************************************************
+*/
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int size = prices.size();
+        //Set initial answer to a value outside of the constaints
+        int minVal = pow(10, 7);
+        int answer = 0;
+        for(int i=0; i < size; i++)
+        {
+            //Find the smallest value in the index
+            if(prices[i] < minVal)
+            {
+                minVal = prices[i];
+            }
+            //Once we've found the min we determine if the value is greatest at the current index
+            else 
+            {
+                answer = max(answer, prices[i] - minVal);
+            }
+        }
+        
+       return answer; 
+    }
+};
