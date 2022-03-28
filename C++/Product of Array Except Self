@@ -1,0 +1,38 @@
+/*
+Prompt: "Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
+
+The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
+
+You must write an algorithm that runs in O(n) time and without using the division operation."
+
+Comment: This one gave me some trouble. Without any optimization this problem can be solved very simply with a nested for loop if you just don't multiple at the current
+index. It can also be solved by dividing out the current "self" if not 0. The prompt explicitly states it must run in O(n) and without the division operation. I had to
+study similar solutions for a while before I felt comfortable creating my own. Essentially we're mutiplying everything to the left and right of the current index. By
+setting the default to 1 we are essentially "skipping" it because value*1 = value. It's very clever, but admittiedly took me some time to fully understand and appriciate.
+*********************************************************************************************************************************************************************
+*/
+
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+          
+        int size = nums.size();
+        vector<int> answer;
+        //create array to store running total of left/right values
+        answer.assign(size, 1);
+        int lt=1;
+        int rt=1;
+        int i=0;
+        int j= size-1;
+        //Multiply the left and right values surrounding the current index to exclude it
+        while(i<size-1 and j>0)
+        {
+            lt*= nums[i++];
+            rt*=nums[j--];
+            answer[i]*=lt;
+            answer[j]*=rt;
+        }
+        return answer;
+        
+    }
+};
