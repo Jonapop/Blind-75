@@ -1,0 +1,26 @@
+/*
+Prompt: "Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+A subarray is a contiguous part of an array."
+Notes: This one took some time because I kept trying to keep the indexes of the array saved, but it's only asking for the value. Once I realized that the solution was
+fairly straightforward
+*********************************************************************************************************************************************************************
+*/
+
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int size = nums.size();
+        int curr = nums[0];
+        int maxA = nums[0];
+        int j = 0;
+        
+        for(int i = 1; i < size; i++)
+        {
+            j = nums[i];
+            //Test if the current value is bigger than current +1 if so check against the current max
+            curr = max(j, curr + j);
+            maxA = max(maxA, curr);         
+        }
+        return maxA;
+    }
+};
