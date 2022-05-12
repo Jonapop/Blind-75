@@ -1,0 +1,42 @@
+/*
+Prompt: "Given an integer array nums, find a contiguous non-empty subarray within the array that has the largest product, and return the product.
+
+The test cases are generated so that the answer will fit in a 32-bit integer.
+
+A subarray is a contiguous subsequence of the array."
+
+Comment:Initially I created a nested for loop once. That seems to be my instinct for these problems, but I am working toward breaking that habit. In this case a nested
+for loop does not compile in time so I needed to think of a solution that did not rely on a nested loop. I realized you could break it out easily into two separate for
+loops as long as the current value was constantly reinitialized to 1 so that the values could times by themselves for the first loop. The program checks its current max
+value against the max value created by evaluating the array both forwards and backwards to capture all possible outputs.
+*********************************************************************************************************************************************************************
+*/
+
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) {
+    int cur = 1;
+    int ans = nums[0];
+        
+        for(int i = 0; i < nums.size(); i++)
+        {
+            cur *= nums[i];
+            ans = max(cur, ans);
+            if(cur == 0)
+            {
+                cur = 1;
+            }
+        }
+        cur = 1;
+        for(int j= nums.size()-1; j >= 0; j--)
+        {
+            cur *= nums[j];
+            ans = max(cur, ans);
+            if(cur == 0)
+            {
+                cur = 1;
+            }
+        }
+        return ans;
+    }
+};
